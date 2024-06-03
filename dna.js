@@ -1,8 +1,6 @@
 var dna = "ATGCGAGGDTTCT";
 var rna = "";
 
-
-
 for(var i = 0; i < dna.length; i++){
     if(dna.charAt(i)=="A"){
         rna+="U";
