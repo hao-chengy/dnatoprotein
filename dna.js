@@ -1,6 +1,24 @@
 var dna = "ATGCGAGGDTTCT";
 var rna = "";
-
+const codons = [
+    "TTT", "TTC", "TTA", "TTG", 
+    "TCT", "TCC", "TCA", "TCG", 
+    "TAT", "TAC", "TAA", "TAG", 
+    "TGT", "TGC", "TGA", "TGG", 
+    "CTT", "CTC", "CTA", "CTG", 
+    "CCT", "CCC", "CCA", "CCG", 
+    "CAT", "CAC", "CAA", "CAG", 
+    "CGT", "CGC", "CGA", "CGG", 
+    "ATT", "ATC", "ATA", "ATG", 
+    "ACT", "ACC", "ACA", "ACG", 
+    "AAT", "AAC", "AAA", "AAG", 
+    "AGT", "AGC", "AGA", "AGG", 
+    "GTT", "GTC", "GTA", "GTG", 
+    "GCT", "GCC", "GCA", "GCG", 
+    "GAT", "GAC", "GAA", "GAG", 
+    "GGT", "GGC", "GGA", "GGG"
+  ];
+  
 for(var i = 0; i < dna.length; i++){
     if(dna.charAt(i)=="A"){
         rna+="U";
@@ -36,4 +54,5 @@ if(rna.length%3!=0){
     }
 
     console.log(codon);
+
 }
