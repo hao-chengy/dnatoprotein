@@ -41,18 +41,22 @@ if(rna.length%3!=0){
     var codon = "";
     var count = 0;
     var num = 0;
-    while(num < rna.length){
-        if(count <3){
-            codon+= rna.charAt(num);
+    var codonarray = [];
+    while (num < rna.length) {
+        if (count < 3) {
+            codon += rna.charAt(num);
             count++;
             num++;
-        }else{
-            codon+= " ";
+        } else {
+            codonarray.push(codon);
+            codon = ""; 
             count = 0;
         }
-        
     }
 
     console.log(codon);
+    var exist = true;
+    for(var i = 0; i < codons.length; i++){
 
+    }
 }
