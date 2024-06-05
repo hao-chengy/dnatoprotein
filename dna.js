@@ -56,7 +56,18 @@ if(rna.length%3!=0){
 
     console.log(codon);
     var exist = true;
-    for(var i = 0; i < codons.length; i++){
 
+for (var i = 0; i < codonarray.length; i++) {
+    var found = false;
+    for (var j = 0; j < condons.length; j++) {
+        if (codonarray[i] == condons[j]) {
+            found = true;
+            break;
+        }
     }
+    if (found == false) {
+        exist = false;
+        break;
+    }
+}
 }
