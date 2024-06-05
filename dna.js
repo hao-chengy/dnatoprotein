@@ -59,8 +59,8 @@ if (rna.length % 3 != 0) {
 
     for (var i = 0; i < codonarray.length; i++) {
         var found = false;
-        for (var j = 0; j < condons.length; j++) {
-            if (codonarray[i] == condons[j]) {
+        for (var j = 0; j < codons.length; j++) {
+            if (codonarray[i] == codons[j]) {
                 found = true;
                 break;
             }
