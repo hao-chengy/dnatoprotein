@@ -1,21 +1,21 @@
-const codons = [
-    "UUU", "UUC", "UUA", "UUG",
-    "UCU", "UCC", "UCA", "UCG",
-    "UAU", "UAC", "UAA", "UAG",
-    "UGU", "UGC", "UGA", "UGG",
-    "CUU", "CUC", "CUA", "CUG",
-    "CCU", "CCC", "CCA", "CCG",
-    "CAU", "CAC", "CAA", "CAG",
-    "CGU", "CGC", "CGA", "CGG",
-    "AUU", "AUC", "AUA", "AUG",
-    "ACU", "ACC", "ACA", "ACG",
-    "AAU", "AAC", "AAA", "AAG",
-    "AGU", "AGC", "AGA", "AGG",
-    "GUU", "GUC", "GUA", "GUG",
-    "GCU", "GCC", "GCA", "GCG",
-    "GAU", "GAC", "GAA", "GAG",
-    "GGU", "GGC", "GGA", "GGG"
-];
+const codonToAminoAcid = {
+    "UUU": "Phenylalanine", "UUC": "Phenylalanine", "UUA": "Leucine", "UUG": "Leucine",
+    "UCU": "Serine", "UCC": "Serine", "UCA": "Serine", "UCG": "Serine",
+    "UAU": "Tyrosine", "UAC": "Tyrosine", "UAA": "Stop", "UAG": "Stop",
+    "UGU": "Cysteine", "UGC": "Cysteine", "UGA": "Stop", "UGG": "Tryptophan",
+    "CUU": "Leucine", "CUC": "Leucine", "CUA": "Leucine", "CUG": "Leucine",
+    "CCU": "Proline", "CCC": "Proline", "CCA": "Proline", "CCG": "Proline",
+    "CAU": "Histidine", "CAC": "Histidine", "CAA": "Glutamine", "CAG": "Glutamine",
+    "CGU": "Arginine", "CGC": "Arginine", "CGA": "Arginine", "CGG": "Arginine",
+    "AUU": "Isoleucine", "AUC": "Isoleucine", "AUA": "Isoleucine", "AUG": "Methionine",
+    "ACU": "Threonine", "ACC": "Threonine", "ACA": "Threonine", "ACG": "Threonine",
+    "AAU": "Asparagine", "AAC": "Asparagine", "AAA": "Lysine", "AAG": "Lysine",
+    "AGU": "Serine", "AGC": "Serine", "AGA": "Arginine", "AGG": "Arginine",
+    "GUU": "Valine", "GUC": "Valine", "GUA": "Valine", "GUG": "Valine",
+    "GCU": "Alanine", "GCC": "Alanine", "GCA": "Alanine", "GCG": "Alanine",
+    "GAU": "Aspartic acid", "GAC": "Aspartic acid", "GAA": "Glutamic acid", "GAG": "Glutamic acid",
+    "GGU": "Glycine", "GGC": "Glycine", "GGA": "Glycine", "GGG": "Glycine"
+};
 
 function translateDNA() {
     var dna = document.getElementById("dnaInput").value.toUpperCase();
@@ -59,24 +59,20 @@ function translateDNA() {
         }
 
         console.log(codonarray);
-        var exist = true;
+        var aminoAcids = [];
+        var valid = true;
 
         for (var i = 0; i < codonarray.length; i++) {
-            var found = false;
-            for (var j = 0; j < codons.length; j++) {
-                if (codonarray[i] == codons[j]) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                exist = false;
+            if (codonToAminoAcid.hasOwnProperty(codonarray[i])) {
+                aminoAcids.push(codonToAminoAcid[codonarray[i]]);
+            } else {
+                valid = false;
                 break;
             }
         }
 
-        if (exist) {
-            document.getElementById("output").innerText = "Valid RNA sequence: " + rna + "\nCodons: " + codonarray.join(", ");
+        if (valid) {
+            document.getElementById("output").innerText = "Valid RNA sequence: " + rna + "\nCodons: " + codonarray.join(", ") + "\nAmino Acids: " + aminoAcids.join(", ");
         } else {
             document.getElementById("output").innerText = "Invalid RNA sequence. Contains non-standard codons.";
         }
